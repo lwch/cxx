@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.jumbotron .btn {
+    width: 300px;
+    font-size: 21px;
+}
