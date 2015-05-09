@@ -4,7 +4,8 @@ require __DIR__.'/common.php';
 global $allow;
 $redis = redis();
 $ip = ip2long($_SERVER['REMOTE_ADDR']);
-if (($ip >> 24) & 0xFF == 10)
+$ip = unpack('N', pack('l', $ip))[1];
+if ($ip & 0xFF == 10)
     exit;
 if (in_array($_REQUEST['id'], $allow) and $redis->get('us~'.$_SERVER['REMOTE_ADDR']) === null) {
     $pipe = $redis->pipeline();
