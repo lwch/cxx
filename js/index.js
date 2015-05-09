@@ -3,6 +3,9 @@ $(function() {
         $this = $(this);
         page.commit($this.attr('id'));
     });
+    $('#refresh').click(function() {
+        page.update();
+    });
     page.update();
 });
 
