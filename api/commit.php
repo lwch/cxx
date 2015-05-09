@@ -1,2 +1,4 @@
 <?php
-var_dump($_ENV);
+require __DIR__.'/common.php';
+
+redis()->incr($_REQUEST['id']);
