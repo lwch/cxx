@@ -19,10 +19,7 @@ var page = {
             data: {
                 id: id
             }
-        }).success(function(data) {
-            if (data.stat == 0)
-                page.update();
-        });
+        }).success(page.update);
     },
     update: function() {
         $.ajax({
