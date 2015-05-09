@@ -16,5 +16,5 @@ function redis() {
 }
 
 $allow = array(
-    'cxx', 'php', 'python', 'shanghai', 'yueyu', 'putong', 'other'
+    'asm', 'c', 'cxx', 'csharp', 'java', 'lua', 'php', 'python', 'shanghai', 'yueyu', 'putong', 'other'
 );
