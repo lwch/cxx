@@ -14,3 +14,7 @@ function redis() {
     }
     return $redis;
 }
+
+$allow = array(
+    'cxx', 'php', 'python', 'shanghai', 'yueyu', 'putong'
+);

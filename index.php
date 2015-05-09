@@ -15,7 +15,7 @@
             <p><a id="php" class="btn btn-success btn-lg" href="#">PHP</a></p>
             <p><a id="python" class="btn btn-success btn-lg" href="#">python</a></p>
             <p><a id="shanghai" class="btn btn-success btn-lg" href="#">上海话</a></p>
-            <p><a id="guangdong" class="btn btn-success btn-lg" href="#">广东话</a></p>
+            <p><a id="yueyu" class="btn btn-success btn-lg" href="#">粤语</a></p>
             <p><a id="putong" class="btn btn-success btn-lg" href="#">普通话</a></p>
             <p><a id="other" class="btn btn-default btn-lg" href="#">强势围观</a></p>
         </div>
