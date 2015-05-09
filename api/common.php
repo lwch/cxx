@@ -17,10 +17,10 @@ function redis() {
 
 $allow = array(
     'asm', 'c', 'cxx',
-    'csharp', 'java', 'js',
-    'lua', 'perl', 'php',
-    'objc', 'python', 'ruby',
-    'shell',
+    'csharp', 'html', 'java',
+    'js', 'lua', 'perl',
+    'php', 'objc', 'python',
+    'ruby', 'shell', 'vb',
     'shanghai', 'yueyu', 'putong',
     'kongju', 'other'
 );
