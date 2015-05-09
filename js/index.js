@@ -29,7 +29,7 @@ var page = {
             dataType: 'jsonp'
         }).success(function(data) {
             $.each(data, function(k, v) {
-                $('#group>p>#'+k+'>span').text(v);
+                $('#group>.row>div>p>#'+k+'>span').text(v);
             });
         });
     }
