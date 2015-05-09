@@ -12,7 +12,7 @@ var page = {
             url: 'http://cxx.coding.io/api/commit.php',
             method: 'GET',
             cache: false,
-            dataType: 'json',
+            dataType: 'jsonp',
             data: {
                 id: id
             }
@@ -26,7 +26,7 @@ var page = {
             url: 'http://cxx.coding.io/api/fetch.php',
             method: 'GET',
             cache: false,
-            dataType: 'json'
+            dataType: 'jsonp'
         }).success(function(data) {
             $.each(data, function(k, v) {
                 $('#group>p>#'+k+'>span').text(v);

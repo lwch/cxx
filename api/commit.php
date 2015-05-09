@@ -8,7 +8,7 @@ if (in_array($_REQUEST['id'], $allow) and $redis->get('us~'.$_SERVER['REMOTE_ADD
     $pipe->incr($_REQUEST['id']);
     $pipe->setex('us~'.$_SERVER['REMOTE_ADDR'], 1, time());
     $pipe->execute();
-    echo '{"stat":0}';
+    echo $_REQUEST['callback'], '({"stat":0});';
     exit;
 }
-echo '{"stat":1}';
+echo $_REQUEST['callback'], '({"stat":1});';

@@ -9,4 +9,4 @@ foreach ($allow as $key) {
     if ($n === null) $n = 0;
     $ret[$key] = strval($n);
 }
-echo json_encode($ret);
+echo $_REQUEST['callback'], '(', json_encode($ret), ');';
