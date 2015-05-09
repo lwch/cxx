@@ -8,7 +8,8 @@ function redis() {
     if (empty($redis)) {
         $redis = new Predis\Client(array(
             'host' => $_ENV['REDIS_HOST'],
-            'port' => $_ENV['REDIS_PORT']
+            'port' => $_ENV['REDIS_PORT'],
+            'password' => $_ENV['REDIS_PASS']
         ));
     }
     return $redis;
