@@ -27,7 +27,9 @@ var page = {
             cache: false,
             dataType: 'json'
         }).success(function(data) {
-            console.log(data);
+            $.each(data, function(k, v) {
+                $('#group>#'+k+'>span').text(v);
+            });
         });
     }
 };
