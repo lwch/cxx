@@ -4,6 +4,7 @@ define('LIMIT', 100);
 
 $redis = redis();
 $keys = $redis->keys('us~*');
+var_dump($keys);exit;
 $ret = array('total' => count($keys), 'data' => array());
 $pipe = $redis->pipeline();
 while (count(keys)) {
