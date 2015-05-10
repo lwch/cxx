@@ -3,10 +3,10 @@ require __DIR__.'/common.php';
 
 global $allow;
 $redis = redis();
-$ip = ip2long($_SERVER['REMOTE_ADDR']);
-$ip = unpack('N', pack('l', $ip))[1];
-if (($ip >> 24) & 0xFF == 10)
+if (substr($_SERVER['REMOTE_ADDR'], 0, 3) == '10.') {
+    echo $_REQUEST['callback'], '({"stat":1});';
     exit;
+}
 if (in_array($_REQUEST['id'], $allow) and $redis->get('us~'.$_SERVER['REMOTE_ADDR']) === null) {
     $pipe = $redis->pipeline();
     $pipe->incr($_REQUEST['id']);
