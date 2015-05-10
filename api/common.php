@@ -15,6 +15,26 @@ function redis() {
     return $redis;
 }
 
+function realip() {
+    static $realip;
+    if (empty($realip)) {
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            foreach (explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']) as $ip) {
+                $ip = trim($ip);
+                if ($ip != 'unknown') {
+                    $realip = $ip;
+                    break;
+                }
+            }
+        } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
+            $realip = $_SERVER['HTTP_CLIENT_IP'];
+        } else {
+            $realip = $_SERVER['REMOTE_ADDR'];
+        }
+    }
+    return $realip;
+}
+
 $allow = array(
     'asm', 'c', 'cxx',
     'csharp', 'html', 'java',
