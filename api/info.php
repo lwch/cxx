@@ -21,5 +21,5 @@ if (count($keys) > LIMIT) {
         ++$ret['data'][$addr];
     }
 }
-ksort($ret['data']);
+rsort($ret['data']);
 echo $_REQUEST['callback'], '(', json_encode($ret), ');';
