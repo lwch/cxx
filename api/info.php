@@ -5,16 +5,16 @@ define('LIMIT', 100);
 $redis = redis();
 $keys = $redis->keys('us~*');
 $ret = array('total' => count($keys), 'data' => array());
-$tmp = array();
+$pipe = $redis->pipeline();
 while (count(keys)) {
-    $tmp[] = array_pop($keys);
+    $pipe->get(array_pop($keys));
     if (count($tmp) >= LIMIT) {
-        $r = call_user_func_array(array($redis, 'mget'), $tmp);
-        foreach ($r as $addr) {
+        foreach ($pipe->execute() as $addr) {
+            if ($addr === null) continue;
             if (!isset($ret['data'][$addr])) $ret['data'][$addr] = 0;
             ++$ret['data'][$addr];
         }
-        $tmp = array();
+        $pipe = $redis->pipeline();
     }
 }
 echo $_REQUEST['callback'], '(', json_encode($ret), ');';exit;
