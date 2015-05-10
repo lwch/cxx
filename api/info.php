@@ -13,6 +13,7 @@ while (count(keys)) {
             if (!isset($ret['data'][$addr])) $ret['data'][$addr] = 0;
             ++$ret['data'][$addr];
         }
+        $tmp = array();
     }
 }
 if (count($tmp)) {
