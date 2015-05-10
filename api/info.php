@@ -1,14 +1,16 @@
 <?php
 require __DIR__.'/common.php';
-define('LIMIT', 10);
+define('LIMIT', 100);
 
 $redis = redis();
 $keys = $redis->keys('us~*');
 $ret = array('total' => count($keys), 'data' => array());
 $pipe = $redis->pipeline();
+$c = 0;
 while (count(keys)) {
     $pipe->get(array_pop($keys));
-    if (count($tmp) >= LIMIT) {
+    file_put_contents('abc', $c."\n", FILE_APPEND);
+    if (++$c % LIMIT == 0) {
         foreach ($pipe->execute() as $addr) {
             if ($addr === null) continue;
             if (!isset($ret['data'][$addr])) $ret['data'][$addr] = 0;
