@@ -5,6 +5,7 @@ define('LIMIT', 100);
 $redis = redis();
 $keys = $redis->keys('us~*');
 $ret = array('total' => count($keys), 'data' => array());
+echo $_REQUEST['callback'], '(', json_encode($ret), ');';exit;
 $tmp = array();
 while (count(keys)) {
     $tmp[] = array_pop($keys);
