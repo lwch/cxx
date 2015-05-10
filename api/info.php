@@ -9,7 +9,8 @@ $tmp = array();
 while (count(keys)) {
     $tmp[] = array_pop($keys);
     if (count($tmp) >= LIMIT) {
-        foreach ($redis->mget($tmp) as $addr) {
+        $r = $redis->mget($tmp);
+        foreach ($r as $addr) {
             if (!isset($ret['data'][$addr])) $ret['data'][$addr] = 0;
             ++$ret['data'][$addr];
         }
@@ -18,7 +19,8 @@ while (count(keys)) {
 }
 echo $_REQUEST['callback'], '(', json_encode($ret), ');';exit;
 if (count($tmp)) {
-    foreach ($redis->mget($tmp) as $addr) {
+    $r = $redis->mget($tmp);
+    foreach ($r as $addr) {
         if (!isset($ret['data'][$addr])) $ret['data'][$addr] = 0;
         ++$ret['data'][$addr];
     }
