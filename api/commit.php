@@ -14,7 +14,7 @@ if (in_array($_REQUEST['id'], $allow) and $redis->get('us~'.$ip) === null) {
         $ret = json_decode($ret, true);
         if ($ret['code'] == 0) {
             $data = $ret['data'];
-            $val = $data['country'].'-'.$data['area'].'/'.$data['region'].'/'.$data['city'];
+            $val = $data['country'].' --- '.$data['area'].' / '.$data['region'].' / '.$data['city'];
         }
     }
     curl_close($curl);
