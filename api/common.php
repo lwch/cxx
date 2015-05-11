@@ -21,15 +21,15 @@ function realip() {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $cnt = 0;
             $forward = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            $ips = array();
             foreach ($forward as $ip) {
                 $ip = trim($ip);
-                if ($ip != 'unknown') {
-                    $realip = $ip;
-                    break;
-                }
                 if (substr($ip, 0, 3) == '10.') ++$cnt;
+                if ($ip != 'unknown')
+                    $ips[] = $ip;
             }
             if ($cnt != 1 or count($forward) != 2) $realip = '';
+            else $realip = $ips[0];
         } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
             $realip = $_SERVER['HTTP_CLIENT_IP'];
         } else {
