@@ -11,6 +11,7 @@ function realip() {
             $forward = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             foreach ($forward as $ip) {
                 $ip = trim($ip);
+                echo $ip, '<br />', "\n";
                 if (substr($ip, 0, 3) == '10.') ++$cnt;
                 if ($ip != 'unknown') {
                     $realip = $ip;
