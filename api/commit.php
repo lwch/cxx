@@ -4,6 +4,8 @@ require __DIR__.'/common.php';
 global $allow;
 $redis = redis();
 $ip = realip();
+if (empty($ip))
+    exit;
 if (in_array($_REQUEST['id'], $allow) and $redis->get('us~'.$ip) === null) {
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, 'ip.taobao.com/service/getIpInfo.php?ip='.$ip);
