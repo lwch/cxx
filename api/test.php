@@ -11,11 +11,11 @@ function realip() {
             $forward = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             foreach ($forward as $ip) {
                 $ip = trim($ip);
+                if (substr($ip, 0, 3) == '10.') ++$cnt;
                 if ($ip != 'unknown') {
                     $realip = $ip;
                     break;
                 }
-                if (substr($ip, 0, 3) == '10.') ++$cnt;
             }
             if ($cnt != 1 or count($forward) != 2) $realip = '';
             var_dump($cnt, $forward, $realip);
