@@ -20,7 +20,8 @@ function realip() {
     if (empty($realip)) {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $cnt = 0;
-            foreach (explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']) as $ip) {
+            $forward = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            foreach ($forward as $ip) {
                 $ip = trim($ip);
                 if ($ip != 'unknown') {
                     $realip = $ip;
@@ -28,7 +29,7 @@ function realip() {
                 }
                 if (substr($ip, 0, 3) == '10.') ++$cnt;
             }
-            if ($cnt != 1) $realip = '';
+            if ($cnt != 1 or count($forward) != 2) $realip = '';
         } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
             $realip = $_SERVER['HTTP_CLIENT_IP'];
         } else {
